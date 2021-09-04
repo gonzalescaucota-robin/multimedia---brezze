@@ -15,6 +15,12 @@ class CreateAsistenciasTable extends Migration
     {
         Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha');
+            $table->string('asistencia',50);
+            
+            $table->unsignedBigInteger('id_usuario');
+            $table->foreign('id_usuario')->references('id')->on('usuarios');
+
             $table->timestamps();
         });
     }

@@ -15,6 +15,16 @@ class CreateDetalleEvaluacionsTable extends Migration
     {
         Schema::create('detalle_evaluacions', function (Blueprint $table) {
             $table->id();
+            $table->integer('nro_pregunta');
+            $table->string('respuesta_estudiante');
+            $table->integer('nota');
+
+            $table->unsignedBigInteger('id_tema');
+            $table->unsignedBigInteger('id_estudiante');
+            
+            $table->foreign('id_tema')->references('id')->on('temas');
+            $table->foreign('id_estudiante')->references('id')->on('usuarios');
+
             $table->timestamps();
         });
     }

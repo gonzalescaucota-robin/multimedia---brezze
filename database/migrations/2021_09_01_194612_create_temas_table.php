@@ -15,6 +15,13 @@ class CreateTemasTable extends Migration
     {
         Schema::create('temas', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo_tema');
+            $table->text('descripcion');
+            $table->string('estado',15);
+
+            $table->unsignedBigInteger('id_materia');
+            $table->foreign('id_materia')->references('id')->on('materias');
+
             $table->timestamps();
         });
     }

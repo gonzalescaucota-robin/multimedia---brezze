@@ -15,6 +15,13 @@ class CreatePreguntasTable extends Migration
     {
         Schema::create('preguntas', function (Blueprint $table) {
             $table->id();
+            $table->integer('nro_pregunta');
+            $table->string('pregunta');
+            $table->string('respuesta');
+
+            $table->unsignedBigInteger('id_tema');
+            $table->foreign('id_tema')->references('id')->on('temas');
+
             $table->timestamps();
         });
     }
